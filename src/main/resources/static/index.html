@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="patternfly.navigation" class="layout-pf layout-pf-fixed">
   <head>
-
     <title>Certifier</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="js/script.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.31.2/css/patternfly.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.31.2/css/patternfly-additions.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
   <body>
+    <!--PatternFly navigation-->
+    <div id="verticalNavLayout" class="layout-pf layout-pf-fixed faux-layout" ng-controller="vertNavController">
+      <pf-vertical-navigation items="navigationItems" brand-alt="Certifier" update-active-items-on-click="true">
+      </pf-vertical-navigation>
+    </div>
+    <!--End PatternFly navigation-->
     <div class="row col-md-12">
       <div class="col-md-4"></div>
       <div class="col-md-4">
@@ -21,16 +27,16 @@
             <footer class="blockquote-footer"><cite title="Source Title">Generate Certificate</cite></footer>
           </blockquote>
         </div>
-
         <!-- Individual certificate generator form -->
         <form class="detail-form" method="POST" action="/generateCert">
-        <div class="optionText">
-          <h4 class="firstHeading">Enter individual details or</h4>          
-          <label class="checkbox-inline">
-            <input class="customCB" type="checkbox" name="customCB" value="1" onchange="valueChanged()"> Upload Custom CSV
-          </label>
-         </div> 
-          <div class="enter_custom">            
+          <div class="optionText">
+            <h4 class="firstHeading">Enter individual details or</h4>
+            <label class="checkbox-inline">
+              <input class="customCB" type="checkbox" name="customCB" value="1" onchange="valueChanged()"> Upload Custom
+              CSV
+            </label>
+          </div>
+          <div class="enter_custom">
             <div class="form-group">
               <label for="name" class="nameform">Name</label>
               <input type="name" class="form-control" id="name" placeholder="Enter name" name="name" required>
@@ -44,7 +50,7 @@
               <label for="score">Score</label>
               <input type="text" class="form-control" id="score" placeholder="Enter Score" name="score" required>
             </div>
-            <div class="center">              
+            <div class="center">
               <button type="submit" id="download" class="btn btn-success btn-lg mt20">Download Certificates</button>
             </div>
           </div>
@@ -52,28 +58,31 @@
           <div class="upload_form">
             <div class="form-group">
               <label for="exampleFormControlFile1" class="uploadLabel">Upload the CSV file</label>
-              <input type="file" id="txtfiletoread" accept=".csv" class="margined"  />
+              <input type="file" id="txtfiletoread" accept=".csv" class="margined"/>
             </div>
             <div class="center">
               <!-- Button trigger modal and preview data -->
-              <button type="button" class="btn btn-primary btn-md mt20" data-toggle="modal" data-target="#exampleModalLong" onclick="handleFiles(txtfiletoread.files)" >
-              Preview Data
+              <button type="button" class="btn btn-primary btn-md mt20" data-toggle="modal"
+                      data-target="#exampleModalLong"
+                      onclick="handleFiles(txtfiletoread.files)">
+                Preview Data
               </button>
               <!-- Modal -->
-              <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+                   aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
-                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Preview Data</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Preview Data</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
                     <div class="modal-body">
                       <p id="displayResults">
                         <!-- Data from file goes here -->
-                      </p>        
-                     </div>
+                      </p>
+                    </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
                     </div>
@@ -81,15 +90,40 @@
                 </div>
               </div>
               <button type="submit" id="download" class="btn btn-success btn-lg mt20">Download Certificates</button>
-            </div>          
+            </div>
           </div>
-        </form>      
+        </form>
       </div>
-    </div> 
+    </div>
     <!--Additional Import files -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>   
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/jquery.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/bootstrap.min.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/bootstrap-select.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/jquery-ui.min.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/jquery.dataTables.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/dataTables.select.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/moment.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/d3.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/c3.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/patternfly-settings.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/patternfly-settings-colors.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/patternfly-settings-charts.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/angular.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/angular-dragdrop.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/angular-datatables.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/angular-datatables.select.min.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/angular-sanitize.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/angular-animate.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/ui-bootstrap-tpls.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/angular-bootstrap-prettify.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/lodash.min.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/angular-patternfly.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/angular-ui-router.min.js"></script>
+    <script src="http://www.patternfly.org/angular-patternfly/grunt-scripts/angular-drag-and-drop-lists.js"></script>
+    <script src="js/script.js" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>
-
-

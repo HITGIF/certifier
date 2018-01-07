@@ -1,6 +1,7 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 div.heading p {
   font-size: 30px;
 }
@@ -11,8 +12,9 @@ form.detail-form {
   border: 3px solid #e4e0e0;
   padding: 70px;
 }
+
 .upload_form {
-	display: none;
+  display: none;
 }
 
 .mt20 {
@@ -22,19 +24,41 @@ form.detail-form {
 .center {
   text-align: center;
 }
+
 #displayResults {
-    word-wrap: break-word;
+  word-wrap: break-word;
 }
+
 .modal-body {
-	overflow-x: auto;
-	margin-right: 15px;
+  overflow-x: auto;
+  margin-right: 15px;
 }
+
 .nameform {
-	margin-top: 15px
+  margin-top: 15px
 }
+
 .firstHeading {
-	font-weight: bold;
+  font-weight: bold;
 }
+
 .uploadLabel {
-	margin-top: 15px
+  margin-top: 15px
+}
+
+.layout-pf-fixed .navbar-pf-vertical {
+  justify-content: flex-start;
+}
+
+.navbar-pf-vertical .navbar-brand {
+  margin-top: 9px;
+}
+
+.nav-pf-vertical {
+  margin-top: 10px;
+  color: white;
+}
+
+.nav-pf-secondary-nav {
+  margin-top: 10px;
 }
