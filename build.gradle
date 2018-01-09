@@ -28,6 +28,8 @@ dependencies {
     // https://mvnrepository.com/artifact/org.freemarker/freemarker
     compile group: 'org.freemarker', name: 'freemarker', version: '2.3.20'
 
+    // https://mvnrepository.com/artifact/org.infinispan/infinispan-embedded
+    compile group: 'org.infinispan', name: 'infinispan-embedded', version: '9.1.4.Final'
 
     compile 'com.sun.mail:javax.mail:1.6.0'
 
