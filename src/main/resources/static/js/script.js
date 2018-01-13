@@ -60,8 +60,22 @@ function handleFiles(files){
       }
     }
 
-angular.module('patternfly.navigation').controller('vertNavController', ['$scope',
-  function ($scope) {
+angular.module('patternfly.navigation').controller('vertNavController', ['$scope', '$http',
+  function ($scope, $http) {
+    $scope.formData = {};
+    $scope.processForm = function () {
+      $http({
+        method: 'POST',
+        url: '/certificates',
+        data: $.param($scope.formData),  // pass in data as strings
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}  // set the headers so angular passing info as form data (not request payload)
+      })
+        .success(function (data) {
+          console.log('Certificate generated, ID:' + data);
+          window.open('/certificates/' + data);
+        });
+    };
+    
     $scope.navigations = [
             {
               title: "View Certificates",
